@@ -1,0 +1,19 @@
+{
+  "name": "newsai",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "bunx --bun astro dev",
+    "start": "bunx --bun astro dev",
+    "build": "bunx --bun astro build",
+    "preview": "bunx --bun astro preview",
+    "astro": "bunx --bun astro"
+  },
+  "dependencies": {
+    "@astrojs/node": "^6.0.0",
+    "astro": "^3.1.0"
+  },
+  "devDependencies": {
+    "bun-types": "^1.0.2"
+  }
+}
