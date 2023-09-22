@@ -1,0 +1,18 @@
+---
+interface Props {
+	items: [{
+        title: string;
+        description: string;
+        href: string;
+        image: string;
+    }];
+}
+const { items } = Astro.props;
+import ListItem from './ListItem.astro';
+---
+
+<ul role="list" class="my-10 divide-y divide-white-100 text-white">
+{items.map((item) => (
+    <ListItem title={item.title} description={item.description} href="/" image="">{item}</li>
+   ))}
+</ul>
