@@ -49,23 +49,23 @@ for (var y = 0; y < minLenght; y++) {
     }
 }
 
-console.log(sumStr);
-
 const openai = new OpenAI({
     organization: "org-7DGwNZhb6Yv6fMG20lxwYyym",
-    apiKey: "",
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
 async function main() {
     const completion = await openai.chat.completions.create({
       messages: [
         { role: "system", content: "You are an assistant that will list news based on multiple titles and descriptions. Build the ranking based on the number of occurences. The first ones to appear in the input text should be prioritized in the output ranking." },
-        { role: "user", content: "Tell me the 10 most important news of the day based on the following titles and descriptions. " + sumStr },
+        { role: "user", content: "Tell me the 10 most important news (and only 10) of the day based on the following titles and descriptions. Return in Json format without" + sumStr },
     ],
       model: "gpt-3.5-turbo-16k",
     });
   
-    console.log(completion.choices[0]);
+    let result = JSON.parse(JSON.stringify(completion.choices[0].message.content));
+
+    console.log(result);
 }
   
 main();
